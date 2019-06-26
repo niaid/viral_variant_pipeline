@@ -76,7 +76,33 @@ head all_variants.called.vcf.txt
 
 # filter the merged file.  Allow for modifying the filter.
 # option 1: get variants with allele depth in any sample greater than 30.  The star applies to any sample. The ":1" refers to the alternate allele.
-cat all_variants.called.vcf.txt | bcftools consensus -m "${line}".sorted.mask.bg -f $REF_SEQ "${line}".single.filtered_30-60.vcf.gz | sed "s/>/>${line} /g" > "${line}".sorted.tr.masked.30-60.vcf.fa
+cat all_variants.called.vcf.txt | bcftools view --include 'FORMAT/AD[*:1] > 30 && FORMAT/PL>60' > all_variants.filtered_30-60.vcf
+cat all_variants.called.vcf.txt | bcftools view --include 'FORMAT/AD[*:1] > 10 && FORMAT/PL>20' > all_variants.filtered_10-20.vcf
+cat all_variants.called.vcf.txt | bcftools view --include "FORMAT/AD[*:1] > $AD && FORMAT/PL>$PL" > all_variants.filtered_$AD-$PL.vcf
+
+
+
+cat *preplot.txt > preplot_ggplot.txt
+
+# run the R plot stuff
+
+cd ..
+./plot_cvg.R
+
+cd $INPUT_DIR
+
+################################################################################################
+#### Step 6: Create a bedfile with coordinates of zero coverage and use it to mask the reference genome
+################################################################################################
+
+# filter variants for each file, then create a consensus with the filtered vcf that can be aligned using mafft
+# note that the consensus will be based on the stricter vcf (30AD, 60PL)
+while read line
+do
+    bcftools view --include 'FORMAT/AD[*:1] > 30 && FORMAT/PL>60' < "${line}".sorted.tr.called.vcf.gz > "${line}".single.filtered_30-60.vcf
+    bgzip "${line}".single.filtered_30-60.vcf
+    tabix "${line}".single.filtered_30-60.vcf.gz
+    bcftools consensus -m "${line}".sorted.mask.bg -f $REF_SEQ "${line}".single.filtered_30-60.vcf.gz | sed "s/>/>${line} /g" > "${line}".sorted.tr.masked.30-60.vcf.fa
    echo "$line"
 done < "$INPUT_FNAMES"
 
