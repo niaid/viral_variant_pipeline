@@ -26,7 +26,7 @@ Set OUTPUTS to where you'd like your outputs to be put. (Make sure this director
 
 Run the pipeline (In this example I'm setting AD to 10 and PL to 20):
 
-`docker run --rm -v $INPUT_DIR:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs philipmac:vir_pipe bash -c "/h2.sh 10 20 > outputs/log.txt 2>&1"`
+`docker run --rm -v $INPUT_DIR:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs philipmac:vir_pipe bash -c "/vir_call.sh 10 20 > outputs/log.txt 2>&1"`
 
 Look at your results:
 
