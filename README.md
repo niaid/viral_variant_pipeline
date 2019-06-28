@@ -71,9 +71,7 @@ https://github.com/rrwick/Porechop/
 
 **Minimap2**
 
-_Heng Li. Minimap2: pairwise alignment for nucleotide sequences
-
-Bioinformatics, Volume 34, Issue 18, 15 September 2018, Pages 3094–3100_
+_Heng Li. Minimap2: pairwise alignment for nucleotide sequences Bioinformatics, Volume 34, Issue 18, 15 September 2018, Pages 3094–3100_
 
 
 **Samtools**
