@@ -23,6 +23,7 @@ Set the following environment variables:
 - The path to the sinlge reference fasta file which the fastq files will be compared to: `REF_SEQ`.
 - The path to the directory that will be created for the outputs: `OUTPUTS`.
 
+This might look something like this:
 
 ```sh
 export INPUT_DIR=/home/macmenaminpe/data/test_chikungunya_fq/
