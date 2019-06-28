@@ -1,6 +1,6 @@
 # viral_variant_pipeline
 
-This viral variant pipeline and dependancies have been packaged on a docker image https://www.docker.com/ to allow it to run on your local machine. To be able to use it you will need to create a dockerhub account https://hub.docker.com/
+This viral variant pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image  to allow it to run on your local machine. To be able to use it you will need a [dockerhub](https://hub.docker.com/) account.
 
 ## Setup 
 This only needs to do be done once OR if the image has been changed and you want to run the updated version.
@@ -37,6 +37,7 @@ run_pipe.sh -a 10 -p 20
 ```
 
 Look at your results:
-
-`ls $OUTPUTS`
+```sh
+ls $OUTPUTS
+```
 
