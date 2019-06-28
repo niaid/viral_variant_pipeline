@@ -2,23 +2,21 @@
 
 This viral variant pipeline and dependancies have been packaged on a docker image https://www.docker.com/ to allow it to run on your local machine. To be able to use it you will need to create a dockerhub account https://hub.docker.com/
 
-## SETUP 
-Only needs to do be done once OR if the image has been changed and you want to run the updated version.
+## Setup 
+This only needs to do be done once OR if the image has been changed and you want to run the updated version.
 
-- Log in to docker using your account information on the command line:
+- Log in to docker using your account and download the image:
 
-`docker login` 
-
-
-- Then you can download the image onto your machine
-
-`docker pull philipmac/vir_pipe`
+```sh
+docker login
+# enter details
+docker pull philipmac/vir_pipe
+```
 
 
 ## Running the pipeline.
 
-If you are running Darwin (OSX) or Linux the pipeline can be run using this script. 
-
+If you are running Darwin (OSX) or Linux the pipeline can be run using [this](https://github.com/niaid/viral_variant_pipeline/blob/master/vir_call.sh) script. 
 Set the following environment variables:
 
 - The path to the directory containing your fastq inputs: `INPUT_DIR`.
@@ -26,18 +24,17 @@ Set the following environment variables:
 - The path to the directory that will be created for the outputs: `OUTPUTS`.
 
 
-
-`export INPUT_DIR=~/data/test_chikungunya_fq/`
-
-`export REF_SEQ=~/data/ref/GCF_000854045.1_ViralProj14998_genomic.fna`
-
-`export OUTPUTS=~/test_outputs_dir`
-
+```sh
+export INPUT_DIR=~/data/test_chikungunya_fq/
+export REF_SEQ=~/data/ref/GCF_000854045.1_ViralProj14998_genomic.fna
+export OUTPUTS=~/test_outputs_dir
+```
 
 Run the pipeline (In this example I'm setting AD to 10 and PL to 20):
 
-
-`run_pipe.sh -a 10 -p 20`
+```sh
+run_pipe.sh -a 10 -p 20
+```
 
 Look at your results:
 
