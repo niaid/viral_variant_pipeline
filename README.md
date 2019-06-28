@@ -25,9 +25,9 @@ Set the following environment variables:
 
 
 ```sh
-export INPUT_DIR=~/data/test_chikungunya_fq/
-export REF_SEQ=~/data/ref/GCF_000854045.1_ViralProj14998_genomic.fna
-export OUTPUTS=~/test_outputs_dir
+export INPUT_DIR=/home/macmenaminpe/data/test_chikungunya_fq/
+export REF_SEQ=/home/macmenaminpe/data/ref/GCF_000854045.1_ViralProj14998_genomic.fna
+export OUTPUTS=/home/macmenaminpe/test_outputs_dir
 ```
 
 Run the pipeline (In this example I'm setting AD to 10 and PL to 20):
