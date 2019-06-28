@@ -5,7 +5,7 @@ This viral variant pipeline and dependancies have been packaged on a [docker](ht
 ## Setup 
 This only needs to do be done once OR if the image has been changed and you want to run the updated version.
 
-- Log in to docker using your account and download the image:
+- Log in to docker and download the image:
 
 ```sh
 docker login
