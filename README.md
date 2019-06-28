@@ -19,14 +19,14 @@ docker pull philipmac/vir_pipe
 If you are running Darwin (OSX) or Linux the pipeline can be run using [this](https://github.com/niaid/viral_variant_pipeline/blob/master/vir_call.sh) script. 
 Set the following environment variables:
 
-- The path to the directory containing your fastq inputs: `INPUT_DIR`.
+- The path to the directory containing your fastq inputs: `INPUTS`.
 - The path to the sinlge reference fasta file which the fastq files will be compared to: `REF_SEQ`.
 - The path to the directory that will be created for the outputs: `OUTPUTS`.
 
 This might look something like this:
 
 ```sh
-export INPUT_DIR=/home/macmenaminpe/data/test_chikungunya_fq/
+export INPUTS=/home/macmenaminpe/data/test_chikungunya_fq/
 export REF_SEQ=/home/macmenaminpe/data/ref/GCF_000854045.1_ViralProj14998_genomic.fna
 export OUTPUTS=/home/macmenaminpe/test_outputs_dir
 ```
