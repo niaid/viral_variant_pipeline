@@ -1,5 +1,7 @@
 # viral_variant_pipeline
 
+## Overview
+This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided. 
 
 ## Summary of Mapping and Variant Calling Steps:
 
@@ -52,7 +54,13 @@ Look at your results:
 ```sh
 ls $OUTPUTS
 ```
- 
+
+## Outputs
+1. VCF file with variants
+2. plots of coverage (pdf)
+3. consensus sequence for each sample (fasta)
+4. aligned sequences
+5. log file
 
 ## References
 
