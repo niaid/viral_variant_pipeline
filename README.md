@@ -48,6 +48,10 @@ Run the pipeline (In this example I'm setting AD to 10 and PL to 20):
 
 ```sh
 run_pipe.sh -a 10 -p 20
+
+Parameters used (view details in https://samtools.github.io/bcftools/bcftools.html):
+-a : Minimium allele depth (AL) in at least one sample
+-p : Phred-scaled genotype likelihoods (PL)
 ```
 
 Look at your results:
