@@ -33,7 +33,7 @@ If you are running Darwin (OSX) or Linux the pipeline can be run using [this](ht
 Set the following environment variables:
 
 - The path to the directory containing your fastq inputs: `INPUTS`.
-- The path to the sinlge reference fasta file which the fastq files will be compared to: `REF_SEQ`.
+- The path to the single reference fasta file which the fastq files will be compared to: `REF_SEQ`.
 - The path to the directory that will be created for the outputs: `OUTPUTS`.
 
 This might look something like this:
