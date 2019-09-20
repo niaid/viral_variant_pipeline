@@ -10,7 +10,7 @@ This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was t
 - Variants are called using both samtools and bcftools.  
 - Coverage plots are created using R from a bedgraph file generated using bedtools and plotted with R ggplot2 package. 
 - A consensus sequence was generated for each sample incorporating variants called.  
-- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters.
+- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters. (not included in this current release, we recommend running mafft online (https://mafft.cbrc.jp/alignment/software/))
 
 
 The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image  to allow it to run on your local machine. To be able to use it you will need a [dockerhub](https://hub.docker.com/) account.
@@ -63,7 +63,7 @@ ls $OUTPUTS
 1. VCF file with variants
 2. plots of coverage (pdf)
 3. consensus sequence for each sample (fasta)
-4. aligned sequences
+4. multi fasta file of all consensus sequences
 5. log file
 
 ## References
@@ -110,6 +110,6 @@ _R Core Team (2018). R: A language and environment for statistical computing. R 
 _H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016._
 
 
-**Mafft**
+**Mafft**   run online: (https://mafft.cbrc.jp/alignment/software/) 
 
 _Kazutaka Katoh and Daron M. Standley. MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability. Mol Biol Evol. 2013 Apr; 30(4): 772–780._
