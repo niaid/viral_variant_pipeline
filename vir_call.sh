@@ -100,7 +100,7 @@ cd $INPUT_DIR
 while read line
 do
     bcftools view --include 'FORMAT/AD[*:1] > 30 && FORMAT/PL>60' < "${line}".sorted.tr.called.vcf.gz > "${line}".single.filtered_30-60.vcf
-    bgzip "${line}".single.filtered_30-60.vcf
+    bgzip -f "${line}".single.filtered_30-60.vcf
     tabix "${line}".single.filtered_30-60.vcf.gz
     bcftools consensus -m "${line}".sorted.mask.bg -f $REF_SEQ "${line}".single.filtered_30-60.vcf.gz | sed "s/>/>${line} /g" > "${line}".sorted.tr.masked.30-60.vcf.fa
    echo "$line"
@@ -110,6 +110,11 @@ done < "$INPUT_FNAMES"
 rm -f all.sorted.tr.masked.30-60.vcf.fa
 cat *sorted.tr.masked.30-60.vcf.fa > all.sorted.tr.masked.vcf.fa
 cat all.sorted.tr.masked.vcf.fa $REF_SEQ > all.sorted.tr.masked_and_ref.fasta
+
+# Clustal ouptput format
+mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln"
+# (optional) Phylip Output format
+mafft  --localpair  --maxiterate 16 --phylipout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.phylip"
 
 status=$?
 
