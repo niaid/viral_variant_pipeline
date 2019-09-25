@@ -47,4 +47,4 @@ done
 shift $((OPTIND-1))
 
 
-docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs philipmac:vir_pipe bash -c "/vir_call.sh ${a} ${p} > outputs/log.txt 2>&1"
+docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs niaid/vir_pipe:latest bash -c "/vir_call.sh ${a} ${p} > outputs/log.txt 2>&1"
