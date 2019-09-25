@@ -4,7 +4,7 @@
 This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided.
 
 ## Requirements
-- A DockerHub account
+- A DockerHub account, which you have logged into on the command line. (See Environment Setup below).
 - [This](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
 
 ## Summary of Mapping and Variant Calling Steps:
