@@ -11,9 +11,9 @@ MIN_BQ=8
 # going to leave these files untouched - copy into a new dir
 AD=$1
 PL=$2
-INPUT_DIR_ARG=${3:-"/data"}
-REF_SEQ_ARG=${4:-"/ref.fa"}
-
+RUN_MAFFT_PHYLIP=$3
+INPUT_DIR_ARG=${4:-"/data"}
+REF_SEQ_ARG=${5:-"/ref.fa"}
 INPUT_DIR='outputs'
 
 # # the file into which we'll list out input files
@@ -113,8 +113,12 @@ cat all.sorted.tr.masked.vcf.fa $REF_SEQ > all.sorted.tr.masked_and_ref.fasta
 
 # Clustal ouptput format
 mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln"
+
 # (optional) Phylip Output format
-mafft  --localpair  --maxiterate 16 --phylipout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.phylip"
+if [ $RUN_MAFFT_PHYLIP = true ]; then
+  mafft  --localpair  --maxiterate 16 --phylipout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.phylip"
+fi
+
 
 status=$?
 
@@ -122,5 +126,5 @@ if test $status -eq 0
 then
     echo "Pipeline exited normally".
 else
-	  echo "Pipeline failed to complete properly, see above."
+  echo "Pipeline failed to complete properly, see above."
 fi

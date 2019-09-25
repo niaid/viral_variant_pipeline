@@ -3,8 +3,10 @@
 set -e
 set -o pipefail
 
-usage() { echo "Usage: $0 [ -a <integer> ] [ -p <integer> ]" 1>&2; exit 1; }
-
+details="\n-a \t(Required) Sets minimium allele depth (AL) in at least one sample\n-p\t(Required) Sets Phred-scaled genotype likelihoods (PL)\n-m\t(Optional) Use -m flag if you'd like to run mafft phylip\n\n"
+usage(){
+  printf "\nUsage: $0 -a  <integer> -p <integer> -m <flag>\n$details">&2; exit 1;
+}
 if [[ -z "${INPUTS}" ]]; then
     echo -e "INPUTS is not set. Set using:\n\n\texport INPUTS='/path/to/inputs'\n"
     usage
@@ -25,26 +27,35 @@ elif [[ -z $(which docker) ]]; then
     usage
 fi
 
-while getopts ":a:p:" o; do
-    case "${o}" in
-        a)
-            a=${OPTARG}
-            if [[ ! $a =~ ^-?[0-9]+$ ]]; then
-                usage
-            fi
-            ;;
-        p)
-            p=${OPTARG}
-            if [[ ! $p =~ ^-?[0-9]+$ ]]; then
-                usage
-            fi
-            ;;
-        *)
-            usage
-            ;;
-    esac
+run_mafft_phylip=false
+
+while getopts ":a:p:m" o; do
+  case "${o}" in
+    a)
+      a=${OPTARG}
+      if [[ ! $a =~ ^-?[0-9]+$ ]]; then
+	usage
+      fi
+      ;;
+    p)
+      p=${OPTARG}
+      if [[ ! $p =~ ^-?[0-9]+$ ]]; then
+	usage
+      fi
+      ;;
+    m)
+      run_mafft_phylip=true
+      ;;
+    *)
+      usage
+      ;;
+  esac
 done
 shift $((OPTIND-1))
 
+if [[ ! $a ]]; then
+  usage
+  exit 1
+fi
 
-docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs niaid/vir_pipe:latest bash -c "/vir_call.sh ${a} ${p} > outputs/log.txt 2>&1"
+docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs niaid/vir_pipe:latest bash -c "/vir_call.sh ${a} ${p} ${run_mafft_phylip}> outputs/log.txt 2>&1"

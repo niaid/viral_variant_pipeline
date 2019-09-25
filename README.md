@@ -23,7 +23,6 @@ This only needs to do be done once OR if the image has been changed and you want
 ```sh
 docker login
 # enter details
-docker pull philipmac/vir_pipe
 ```
 
 
