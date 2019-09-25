@@ -3,21 +3,13 @@
 ## Overview
 This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided.
 
+The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image  to allow it to run on your local machine. To be able to use it you will need a [dockerhub](https://hub.docker.com/) account.
+
 ## Requirements
 - A DockerHub account, which you have logged into on the command line. (See Environment Setup below).
 - [This](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
 
-## Summary of Mapping and Variant Calling Steps:
 
-- FASTQ files are filtered and trimmed with Nanofilt (-q 8 -l 500 --headcrop 50).  
-- Reads are then aligned to the reference genome using minimap2(x) and parameter -ax map-ont.  
-- Variants are called using both samtools and bcftools.  
-- Coverage plots are created using R from a bedgraph file generated using bedtools and plotted with R ggplot2 package. 
-- A consensus sequence was generated for each sample incorporating variants called.  
-- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters. (not included in this current release, we recommend running mafft online (https://mafft.cbrc.jp/alignment/software/))
-
-
-The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image  to allow it to run on your local machine. To be able to use it you will need a [dockerhub](https://hub.docker.com/) account.
 
 ## Environment Setup:
 This only needs to do be done once OR if the image has been changed and you want to run the updated version.
@@ -68,6 +60,15 @@ ls $OUTPUTS
 3. consensus sequence for each sample (fasta)
 4. multi fasta file of all consensus sequences
 5. log file
+
+## Summary of Mapping and Variant Calling Steps:
+
+- FASTQ files are filtered and trimmed with Nanofilt (-q 8 -l 500 --headcrop 50).  
+- Reads are then aligned to the reference genome using minimap2(x) and parameter -ax map-ont.  
+- Variants are called using both samtools and bcftools.  
+- Coverage plots are created using R from a bedgraph file generated using bedtools and plotted with R ggplot2 package. 
+- A consensus sequence was generated for each sample incorporating variants called.  
+- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters. (not included in this current release, we recommend running mafft online (https://mafft.cbrc.jp/alignment/software/))
 
 ## References
 
