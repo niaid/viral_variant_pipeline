@@ -1,7 +1,11 @@
 # viral_variant_pipeline
 
 ## Overview
-This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided. 
+This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided.
+
+## Requirements
+- A DockerHub account
+- [This](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
 
 ## Summary of Mapping and Variant Calling Steps:
 
@@ -28,7 +32,7 @@ docker login
 
 ## Running the pipeline:
 
-If you are running Darwin (OSX) or Linux the pipeline can be run using [this](https://github.com/niaid/viral_variant_pipeline/blob/master/vir_call.sh) script. 
+If you are running Darwin (OSX) or Linux the pipeline can be run using [this](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
 Set the following environment variables:
 
 - The path to the directory containing your fastq inputs: `INPUTS`.
