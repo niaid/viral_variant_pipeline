@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-details="\n-a \t(Required) Sets minimium allele depth (AL) in at least one sample\n-p\t(Required) Sets Phred-scaled genotype likelihoods (PL)\n-m\t(Optional) Use -m flag if you'd like to run mafft phylip\n\n"
+details="\n-a \t(Required) Sets minimium allele depth (AL) in at least one sample\n-p\t(Required) Sets Phred-scaled genotype likelihoods (PL)\n-m\t(Optional) Use -m flag if you'd like to run mafft phylip\n-c\t(Optional) Use -c flag if you'd like to run mafft clustal\n\n"
 usage(){
   printf "\nUsage: $0 -a  <integer> -p <integer> -m <flag>\n$details">&2; exit 1;
 }
