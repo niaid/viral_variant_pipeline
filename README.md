@@ -50,6 +50,25 @@ Parameters used (view details in https://samtools.github.io/bcftools/bcftools.ht
 -p : Phred-scaled genotype likelihoods (PL)
 ```
 
+Additionally you can run mafft phylip:
+
+```sh
+run_pipe.sh -a 10 -p 20 -m
+```
+
+Or mafft clustal:
+
+```sh
+run_pipe.sh -a 10 -p 20 -c
+```
+
+Or both mafft phylip and clustal:
+
+```sh
+run_pipe.sh -a 10 -p 20 -c -m
+```
+
+
 Look at your results:
 ```sh
 ls $OUTPUTS
