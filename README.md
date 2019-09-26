@@ -88,7 +88,7 @@ ls $OUTPUTS
 - Variants are called using both samtools and bcftools.  
 - Coverage plots are created using R from a bedgraph file generated using bedtools and plotted with R ggplot2 package. 
 - A consensus sequence was generated for each sample incorporating variants called.  
-- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters. (not included in this current release, we recommend running mafft online (https://mafft.cbrc.jp/alignment/software/))
+- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters.  (https://mafft.cbrc.jp/alignment/software/))
 
 ## References
 
