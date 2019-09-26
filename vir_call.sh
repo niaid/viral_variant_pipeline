@@ -12,8 +12,9 @@ MIN_BQ=8
 AD=$1
 PL=$2
 RUN_MAFFT_PHYLIP=$3
-INPUT_DIR_ARG=${4:-"/data"}
-REF_SEQ_ARG=${5:-"/ref.fa"}
+RUN_MAFFT_CLUSTAL=$4
+INPUT_DIR_ARG=${5:-"/data"}
+REF_SEQ_ARG=${6:-"/ref.fa"}
 INPUT_DIR='outputs'
 
 # # the file into which we'll list out input files
@@ -112,7 +113,9 @@ cat *sorted.tr.masked.30-60.vcf.fa > all.sorted.tr.masked.vcf.fa
 cat all.sorted.tr.masked.vcf.fa $REF_SEQ > all.sorted.tr.masked_and_ref.fasta
 
 # Clustal ouptput format
-mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln" > /dev/null 2>&1
+if [ $RUN_MAFFT_CLUSTAL = true ]; then
+  mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln" > /dev/null 2>&1
+fi
 
 # (optional) Phylip Output format
 if [ $RUN_MAFFT_PHYLIP = true ]; then

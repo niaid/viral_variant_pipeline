@@ -28,8 +28,9 @@ elif [[ -z $(which docker) ]]; then
 fi
 
 run_mafft_phylip=false
+run_mafft_clustal=false
 
-while getopts ":a:p:m" o; do
+while getopts ":a:p:mc" o; do
   case "${o}" in
     a)
       a=${OPTARG}
@@ -46,6 +47,9 @@ while getopts ":a:p:m" o; do
     m)
       run_mafft_phylip=true
       ;;
+    c)
+      run_mafft_clustal=true
+      ;;
     *)
       usage
       ;;
@@ -58,4 +62,4 @@ if [[ ! $a ]]; then
   exit 1
 fi
 
-docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs niaid/vir_pipe:latest bash -c "/vir_call.sh ${a} ${p} ${run_mafft_phylip}> outputs/log.txt 2>&1"
+docker run --rm -v $INPUTS:/data -v $REF_SEQ:/ref.fa -v $OUTPUTS:/outputs niaid/vir_pipe:latest bash -c "/vir_call.sh ${a} ${p} ${run_mafft_phylip} ${run_mafft_clustal}> outputs/log.txt 2>&1"
