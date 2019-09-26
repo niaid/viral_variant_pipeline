@@ -112,11 +112,11 @@ cat *sorted.tr.masked.30-60.vcf.fa > all.sorted.tr.masked.vcf.fa
 cat all.sorted.tr.masked.vcf.fa $REF_SEQ > all.sorted.tr.masked_and_ref.fasta
 
 # Clustal ouptput format
-mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln"
+mafft  --localpair  --maxiterate 16 --clustalout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.aln" > /dev/null 2>&1
 
 # (optional) Phylip Output format
 if [ $RUN_MAFFT_PHYLIP = true ]; then
-  mafft  --localpair  --maxiterate 16 --phylipout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.phylip"
+  mafft  --localpair  --maxiterate 16 --phylipout --reorder "all.sorted.tr.masked_and_ref.fasta" > "all.sorted.tr.masked_and_ref.phylip" > /dev/null 2>&1
 fi
 
 
@@ -124,7 +124,7 @@ status=$?
 
 if test $status -eq 0
 then
-    echo "Pipeline exited normally".
+  echo "Pipeline exited normally".
 else
   echo "Pipeline failed to complete properly, see above."
 fi
