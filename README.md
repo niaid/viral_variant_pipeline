@@ -5,6 +5,8 @@ This pipeline was prepared by the [National Institute of Allergy and Infectious 
 
 The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image to allow it to run on your local machine. To obtain this image you will need a [dockerhub](https://hub.docker.com/) account.
 
+This repository defines how the pipeline works, and how the Docker image was created. In addition to this, a small helper script has been added to simplify interaction with the Docker container, see Requirements.
+
 ## Requirements:
 - A DockerHub account, which you have logged into on the command line. (See Environment Setup below).
 - [This](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
