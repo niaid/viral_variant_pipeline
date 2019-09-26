@@ -1,14 +1,15 @@
 # viral_variant_pipeline
 
-## Overview
-This pipeline was prepared for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided.
+## Overview:
+This pipeline was prepared by the [National Institute of Allergy and Infectious Diseases](https://www.niaid.nih.gov/) for Yinda Kwe Claude (kweclaudey2@nih.gov).  It was tested with minION reads expected to map to reference genomes for Nipah virus and Hendra virus.  The goal is to identify variants in new samples in relation to the reference provided.
 
-The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image  to allow it to run on your local machine. To be able to use it you will need a [dockerhub](https://hub.docker.com/) account.
+The pipeline and dependancies have been packaged on a [docker](https://www.docker.com/) image to allow it to run on your local machine. To obtain this image you will need a [dockerhub](https://hub.docker.com/) account.
 
-## Requirements
+This repository defines how the pipeline works, and how the Docker image was created. In addition to this, a small helper script has been added to simplify interaction with the Docker container, see Requirements.
+
+## Requirements:
 - A DockerHub account, which you have logged into on the command line. (See Environment Setup below).
 - [This](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
-
 
 
 ## Environment Setup:
@@ -27,9 +28,9 @@ docker login
 If you are running Darwin (OSX) or Linux the pipeline can be run using [this](https://github.com/niaid/viral_variant_pipeline/blob/master/run_pipe.sh) script.
 Set the following environment variables:
 
-- The path to the directory containing your fastq inputs: `INPUTS`.
-- The path to the single reference fasta file which the fastq files will be compared to: `REF_SEQ`.
-- The path to the directory that will be created for the outputs: `OUTPUTS`.
+- `INPUTS`: The path to the directory containing your fastq inputs.
+- `REF_SEQ`: The path to the single reference fasta file which the fastq files will be compared to.
+- `OUTPUTS`: The path to the directory that will be created for the outputs.
 
 This might look something like this:
 
@@ -54,7 +55,7 @@ Look at your results:
 ls $OUTPUTS
 ```
 
-## Outputs
+## Outputs:
 1. VCF file with variants
 2. plots of coverage (pdf)
 3. consensus sequence for each sample (fasta)
@@ -72,13 +73,9 @@ ls $OUTPUTS
 
 ## References
 
- 
-
 **Poretools**
 
-_Loman N, Quinlan A. Poretools: a toolkit for analyzing nanopore sequence data. Bioinformatics. 2014;30.23:3399–3401._
-
- 
+_Loman N, Quinlan A. Poretools: a toolkit for analyzing nanopore sequence data. Bioinformatics. 2014;30.23:3399–3401._ 
 
 **Porechops**
 
