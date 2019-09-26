@@ -50,6 +50,25 @@ Parameters used (view details in https://samtools.github.io/bcftools/bcftools.ht
 -p : Phred-scaled genotype likelihoods (PL)
 ```
 
+Additionally you can run mafft phylip:
+
+```sh
+run_pipe.sh -a 10 -p 20 -m
+```
+
+Or mafft clustal:
+
+```sh
+run_pipe.sh -a 10 -p 20 -c
+```
+
+Or both mafft phylip and clustal:
+
+```sh
+run_pipe.sh -a 10 -p 20 -c -m
+```
+
+
 Look at your results:
 ```sh
 ls $OUTPUTS
@@ -69,7 +88,7 @@ ls $OUTPUTS
 - Variants are called using both samtools and bcftools.  
 - Coverage plots are created using R from a bedgraph file generated using bedtools and plotted with R ggplot2 package. 
 - A consensus sequence was generated for each sample incorporating variants called.  
-- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters. (not included in this current release, we recommend running mafft online (https://mafft.cbrc.jp/alignment/software/))
+- All consensus sequences are finally aligned together with the reference sequence using mafft with default parameters.  (https://mafft.cbrc.jp/alignment/software/))
 
 ## References
 
