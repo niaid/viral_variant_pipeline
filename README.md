@@ -130,6 +130,6 @@ _R Core Team (2018). R: A language and environment for statistical computing. R 
 _H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016._
 
 
-**Mafft**   run online: (https://mafft.cbrc.jp/alignment/software/) 
+**Mafft** (https://mafft.cbrc.jp/alignment/software/) 
 
 _Kazutaka Katoh and Daron M. Standley. MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability. Mol Biol Evol. 2013 Apr; 30(4): 772–780._
